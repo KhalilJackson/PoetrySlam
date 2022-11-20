@@ -39,13 +39,16 @@ import os
 
 def parts_of_speech():
     """
-    Takes in text as a single string.
-
-    Returning three values and put them into 
-
-
-    Breaks down string into parts of speech.
-    Makes lists for nouns, verbs, and adjectives.
+    Takes in the inputted text as a single string, and those words are 
+    categorized by their parts of speech using spacy. The nouns, adjectives, 
+    and verbs are kept and placed into respective lists to be passed down to 
+    the middle_man function. Returns a list of nouns, a list of adjectives, and
+    a list of verbs.
+    
+    Args:
+        noun_list: list of nouns from the inputted text
+        adjective_list: list of adjectives from the inputted text
+        verb_list: list of adjectives from the inputted text
     """
 
     nlp = spacy.load("en_core_web_sm")
@@ -75,9 +78,17 @@ def parts_of_speech():
 
 def middle_man(noun_list, adjective_list, verb_list):
     """
-    takes in noun_list, adjective_list, verb_list from parts_of_speech.
-    
-    Figure out what to do if there are not enough POS.
+    Takes in noun_list, adjective_list, verb_list from parts_of_speech, and it 
+    wittles down the lists to only include the necessary number of nouns, 
+    adjectvies, and verbs. If there are not enough of a part of speech, those 
+    missing words are filled with a period. 
+
+    ***See if I can prioritize 'ing' verbs***
+
+    Args:
+        noun_list: list of nouns from the inputted text
+        adjective_list: list of adjectives from the inputted text
+        verb_list: list of adjectives from the inputted text
     """
 
     noun_list = noun_list
