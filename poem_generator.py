@@ -25,7 +25,7 @@ Resources considered:
 
 import spacy
 
-def parts_of_speech():
+def parts_of_speech(inputted_string):
     """
     Takes in the inputted text as a single string, and those words are 
     categorized by their parts of speech using spacy. The nouns, adjectives, 
@@ -43,7 +43,7 @@ def parts_of_speech():
     nlp = spacy.load("en_core_web_sm")
 
     #connect the parameter with the code
-    doc = nlp("We comin' blacker than Black Panther 2 Nobody this thorough, that's the truth Never go against the family, that's something you don't do Don't get Eddie Kane'd tryin' to sing your way back in the group (Nah) Stars in the ceiling, God's Son in the building, rep that 7-1-8 It's hard to depart from that feeling, careful selling weight The DA be watchin' you dealing Get yourself straight Before they find that paraphernalia For those who claim a hundred million on taxes, beautiful actresses Street dudes who turned activist, who used to move packages Know Nas still here to remove the wall that our back against Legitimize all your hustles before the gavel hit")
+    doc = nlp(inputted_string)
 
     noun_list = []
     adjective_list = []

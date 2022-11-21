@@ -101,3 +101,10 @@ def conventional_similarity(diamante_list):
     print(score)
 
     # return(score)
+
+
+def main():
+
+    diamante_list = ['bravehearts', ['intense', 'legit'], ['comin', 'sing', 'dealing'], ['beginnings', 'fasho', 'blacker', 'panther'], ['ownin', 'starving', 'trying'], ['black', 'thorough'], 'truth']
+
+    conventional_similarity(diamante_list)
