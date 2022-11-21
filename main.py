@@ -19,6 +19,7 @@ receive a score out of 16 to determine if each words fits its position.
 [Saving poems to be read later]
 """
 
+import random
 import spacy
 import os
 
@@ -42,8 +43,9 @@ def parts_of_speech():
     Takes in the inputted text as a single string, and those words are 
     categorized by their parts of speech using spacy. The nouns, adjectives, 
     and verbs are kept and placed into respective lists to be passed down to 
-    the middle_man function. Returns a list of nouns, a list of adjectives, and
-    a list of verbs.
+    the middle_man function. 
+    
+    Returns noun_list, adjective_list, and verb_list.
     
     Args:
         noun_list: list of nouns from the inputted text
@@ -81,9 +83,11 @@ def middle_man(noun_list, adjective_list, verb_list):
     Takes in noun_list, adjective_list, verb_list from parts_of_speech, and it 
     wittles down the lists to only include the necessary number of nouns, 
     adjectvies, and verbs. If there are not enough of a part of speech, those 
-    missing words are filled with a period. 
+    missing words are filled with a period. The function also selects for all 
+    available 'ing' verbs to be added to the a new_verb_list in an attemp to 
+    increase its evaluation score.
 
-    ***See if I can prioritize 'ing' verbs***
+    Returns a noun_list, adjective_list, and new_verb_list.
 
     Args:
         noun_list: list of nouns from the inputted text
@@ -93,7 +97,9 @@ def middle_man(noun_list, adjective_list, verb_list):
 
     noun_list = noun_list
     adjective_list = adjective_list
-    verb_list = verb_list
+    original_verb_list = verb_list
+
+    new_verb_list = []
 
     #makes sure there are at least six nouns, a period for noun
     if len(noun_list) < 6:
@@ -115,37 +121,115 @@ def middle_man(noun_list, adjective_list, verb_list):
         while len(adjective_list) > 4:
             adjective_list.pop()
 
-    #makes sure there are at least six verbs, a period for a verb
-    if len(verb_list) < 6:
-        while len(verb_list) < 6:
-            verb_list.append(".")
+    #placed the 'ing' verbs from orinigal_verb_list in new_verb_list
+    for verb in verb_list:
+        if verb[-3:] == "ing" or verb[-2:] == "in":
+            new_verb_list.append(verb)
+
+    #makes sure there are at least six verbs in new_verb_list
+    if len(new_verb_list) < 6:
+        while len(new_verb_list) < 6 and len(original_verb_list) > 0:
+            new_verb_list.append(original_verb_list.pop())
+        
+        #if there are no more verbs to add, substitute with a period
+        while len(new_verb_list) < 6 and len(original_verb_list) == 0:
+            new_verb_list.append(".")
 
     #makes sure there are no more than six verbs
-    if len(verb_list) > 6:
-        while len(verb_list) > 6:
-            verb_list.pop()
+    if len(new_verb_list) > 6:
+        while len(new_verb_list) > 6:
+            new_verb_list.pop()
 
-    return noun_list, adjective_list, verb_list
+    # print("HERE IS THE NOUN LIST")
+    # print(noun_list)
+    # print("HERE IS THE ADJECTIVE LIST")
+    # print(adjective_list)
+    # print("HERE IS THE NEW VERB LIST")
+    # print(new_verb_list)
+    return noun_list, adjective_list, new_verb_list
 
-def poem_maker():
+def poem_maker(noun_list, adjective_list, verb_list):
     """
-    Takes in noun_list, adjective_list, verb_list from middle_man
+    Takes in noun_list, adjective_list, and verb_list from middle_man to create 
+    a list representation of the diamante porem and a strign representation of 
+    the diamante poem.
 
+    Returns diamante_list and diamante_string.
+
+    Args:
+        noun_list: list of nouns from the inputted text
+        adjective_list: list of adjectives from the inputted text
+        verb_list: list of adjectives from the inputted text
     """
 
-    noun_list = ['blacker', 'truth', 'family', 'way', 'group', 'ceiling']
-    adjective_list = ['hard', 'careful', 'watchin', 'beautiful']
-    verb_list = ['comin', 'go', 'do', 'get', 'sing', 'depart']
+    # noun_list = ['blacker', 'truth', 'family', 'way', 'group', 'ceiling']
+    # adjective_list = ['hard', 'careful', 'watchin', 'beautiful']
+    # verb_list = ['comin', 'go', 'do', 'get', 'sing', 'depart']
+
+    noun_list = noun_list
+    adjective_list = adjective_list
+    verb_list = verb_list
+
+    diamante_list = []
+    diamante_string = ""
+
+    #appends diamante list in diamante poem order
+    diamante_list.append(noun_list[0])
+    diamante_list.append(adjective_list[0:2])
+    diamante_list.append(verb_list[0:3])
+    diamante_list.append(noun_list[1:5])
+    diamante_list.append(verb_list[3:])
+    diamante_list.append(adjective_list[2:])
+    diamante_list.append(noun_list[-1])
+
+    print("here is the diamante list")
+    print(diamante_list)
+
+    #iterates through list to format a string of the poem
+    for section in diamante_list:
+        if type(section) == str:
+            diamante_string = diamante_string + section + " "
+        else:
+            diamante_string = diamante_string + " ".join(section) + " "
 
 
+    print("here is the diamante string")
+    print(diamante_string)
+
+    return diamante_list, diamante_string
 
 
 
 
 def main():
 
-    noun_list, adjective_list, verb_list = parts_of_speech()
-    middle_man(noun_list, adjective_list, verb_list)
+    # plain_text = ""
+
+    # with open("legit_nas.txt", "r") as f:
+    #     for line in f:
+   
+    #         plain_text = plain_text + line
+    #         # line.lower
+    #         # line.replace(",", "")
+    #         # line.replace("(", "")
+    #         # line.replace(")", "")
+
+    #     # print(line, end="")
+    #     plain_text.lower
+    #     plain_text.replace(",", "")
+    #     plain_text.replace("(", "")
+    #     plain_text.replace(")", "")
+       
+    #     print(plain_text)
+
+    #     # text = f.read()
+    #     # print(text)
+    
+
+    # noun_list, adjective_list, verb_list = parts_of_speech()
+    # middle_man(noun_list, adjective_list, verb_list)
+
+    poem_maker()
 
 
 
