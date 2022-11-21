@@ -148,7 +148,7 @@ def middle_man(noun_list, adjective_list, verb_list):
     # print(new_verb_list)
     return noun_list, adjective_list, new_verb_list
 
-def poem_maker(noun_list, adjective_list, verb_list):
+def poem_maker():
     """
     Takes in noun_list, adjective_list, and verb_list from middle_man to create 
     a list representation of the diamante porem and a strign representation of 
@@ -162,13 +162,13 @@ def poem_maker(noun_list, adjective_list, verb_list):
         verb_list: list of adjectives from the inputted text
     """
 
-    # noun_list = ['blacker', 'truth', 'family', 'way', 'group', 'ceiling']
-    # adjective_list = ['hard', 'careful', 'watchin', 'beautiful']
-    # verb_list = ['comin', 'go', 'do', 'get', 'sing', 'depart']
+    noun_list = ['blacker', 'truth', 'family', '。', 'group', 'ceiling']
+    adjective_list = ['hard', 'careful', 'watchin', 'beautiful']
+    verb_list = ['comin', 'go', 'do', 'get', '。', 'depart']
 
-    noun_list = noun_list
-    adjective_list = adjective_list
-    verb_list = verb_list
+    # noun_list = noun_list
+    # adjective_list = adjective_list
+    # verb_list = verb_list
 
     diamante_list = []
     diamante_string = ""
