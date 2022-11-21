@@ -4,7 +4,7 @@ Written by Khalil Jackson
 This file contains the functions used to provide and evaluation for the diamante poem. 
 
 
-
+Resources considered:
 """
 
 import spacy

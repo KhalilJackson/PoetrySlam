@@ -19,22 +19,11 @@ spaCy.
 
 [Talk to text]
 [Saving poems to be read later]
+
+Resources considered:
 """
 
 import spacy
-
-# passage = "We comin' (back) blacker than Black Panther 2 Nobody this thorough, that's the truth Never go against the family, that's something you don't do Don't get Eddie Kane'd tryin' to sing your way back in the group (Nah) Stars in the ceiling, God's Son in the building, rep that 7-1-8 It's hard to depart from that feeling, careful selling weight The DA be watchin' you dealing Get yourself straight Before they find that paraphernalia For those who claim a hundred million on taxes, beautiful actresses Street dudes who turned activist, who used to move packages Know Nas still here to remove the wall that our back against Legitimize all your hustles before the gavel hit"
-
-# print("LOWERCASE VERSION")
-# print(passage.lower)
-# passage.replace(",", "")
-# passage.replace("(", "")
-# passage.replace(")", "")
-
-#print(passage)
-
-#Need to figure out how to input text from input file
-#Need to remove commas and parentheses
 
 def parts_of_speech():
     """

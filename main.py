@@ -1,10 +1,19 @@
+"""
+Written by Khalil Jackson
+
+
+Resources considered:
+
+"""
 
 from poem_generator import *
 from evaluation import *
 
 
 def main():
-
+    """
+    
+    """
 
     # diamante_list = ['blacker', ['hard', 'careful'], ['comin', 'go', 'do'], ['truth', 'family', '。', 'group'], ['get', '。', 'depart'], ['watchin', 'beautiful'], 'ceiling']
 
@@ -49,9 +58,6 @@ def main():
 
     spacy_similarities(diamante_list)
     conventional_similarity(diamante_list)
-
-
-
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,9 @@
 """
+Written by Khalil Jackson
+
 Contains the method used to turn the poem and its evaluated score into an mp3 file.
 
+Resources considered:
 """
 
 from gtts import gTTS
