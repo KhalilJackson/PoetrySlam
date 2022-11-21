@@ -11,9 +11,11 @@ The generator takes in a .txt file and uses spacy to groups words together
 by their parts of speech. Then, we select the necessary number of 
 nouns, adjectives, and verbs from those lists to creare a diamante poem.
 
-A poem is evaluated by how closely it follows the actual diamante poem 
-structure. There are a total of 16 words across seven rows. Each poem will 
-receive a score out of 16 to determine if each words fits its position.
+A poem is evaluated by two metrics. The first is how closely it follows the 
+actual diamante poem structure. There are a total of 16 words across seven 
+rows. Each poem will receive a score out of 16 to determine if each words fits 
+its position. The second is a combined similarity score using nltk.wordnet and 
+spaCy.
 
 [Talk to text]
 [Saving poems to be read later]
@@ -148,7 +150,7 @@ def middle_man(noun_list, adjective_list, verb_list):
     # print(new_verb_list)
     return noun_list, adjective_list, new_verb_list
 
-def poem_maker():
+def poem_maker(noun_list, adjective_list, verb_list):
     """
     Takes in noun_list, adjective_list, and verb_list from middle_man to create 
     a list representation of the diamante porem and a strign representation of 
@@ -162,13 +164,13 @@ def poem_maker():
         verb_list: list of adjectives from the inputted text
     """
 
-    noun_list = ['blacker', 'truth', 'family', '。', 'group', 'ceiling']
-    adjective_list = ['hard', 'careful', 'watchin', 'beautiful']
-    verb_list = ['comin', 'go', 'do', 'get', '。', 'depart']
+    # noun_list = ['blacker', 'truth', 'family', 'way', 'group', 'ceiling']
+    # adjective_list = ['hard', 'careful', 'watchin', 'beautiful']
+    # verb_list = ['comin', 'go', 'do', 'get', 'sing', 'depart']
 
-    # noun_list = noun_list
-    # adjective_list = adjective_list
-    # verb_list = verb_list
+    noun_list = noun_list
+    adjective_list = adjective_list
+    verb_list = verb_list
 
     diamante_list = []
     diamante_string = ""
@@ -203,6 +205,8 @@ def poem_maker():
 
 def main():
 
+    # take user input to get the .txt file
+    
     # plain_text = ""
 
     # with open("legit_nas.txt", "r") as f:
