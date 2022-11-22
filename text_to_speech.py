@@ -1,26 +1,35 @@
 """
 Written by Khalil Jackson
+11/22/2022
 
-Contains the methods used to turn the diamante poem into a .txt file then read 
-it out loud.
+Contains the methods used to turn the diamante poem into a .txt file and read 
+it out loud. file_creator() creates the file with the poem and scores 
+represented as a single string; this was done because the readline function 
+would have trouble reading the entire poem and scored formatted with newlines; 
+the function also returns the filename because file_reader is called using it 
+by the main; this prevents the chance there is an error inputting the local 
+file. file_reader() reads the contents of the .txt files.
 
-Resources considered:
 """
 
 from evaluation import *
 from poem_generator import *
-from gtts import gTTS
 import os
-
 
 def file_creator(diamante_string, similarity_score, conventional_score):
     """
-    Takes in diamante_string, similarity_score, and conventional_score.
-    
+    Takes in diamante_string, similarity_score, and conventional_score to 
+    create a file containing a single string with the poem and its scores. 
+    Names the poem after its first and last noun before formatting the string 
+    and writitng it to a new file.
+
+    Returns the name of the file.
+
+    Args:
+        diamante_string = string representation of the poem
+        similarity_score = similarity score of poem halves
+        conventional_score = similarity score of poem to its conventions
     """
-    # diamante_string = "spacy similarity score for diamante poem"
-    # similarity_score = 0.4356
-    # conventional_score = 7/16
 
     diamante_string = diamante_string
     similarity_score = similarity_score
@@ -45,10 +54,16 @@ def file_creator(diamante_string, similarity_score, conventional_score):
     file.write(file_string)
     file.close()
 
+    # Returns the file name
     return(file_name)
 
-
 def file_reader(file_name):
+    """
+    Takes in the file name then opens the file to be read.
+
+    Args:
+        file_name = name of the file including ".txt"
+    """
 
     file_name = file_name
 
@@ -58,13 +73,3 @@ def file_reader(file_name):
     
     # Reads the string
     os.system("say " + string)
-
-# def main():
-
-#     # file_creator()
-#     file_reader()
-
-# if __name__ == "__main__":
-#     main()
-
-

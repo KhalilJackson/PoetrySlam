@@ -1,26 +1,12 @@
 """
 Written by Khalil Jackson
+11/22/2022
 
-This project is designed to creates a Diamante Poem generator. A diamante poem 
-is one that is diamond shaped because it takes two nouns, synonyms or antonyms,
-and follows the order of 1-3 for the first noun and 3-1 for the second 
-(one noun, two adjectives, and three 'ing' verbs). Between both sets of three 
-'ing' verbs is four nouns that relate to both nouns.
-
-The generator takes in a .txt file and uses spacy to groups words together 
-by their parts of speech. Then, we select the necessary number of 
-nouns, adjectives, and verbs from those lists to creare a diamante poem.
-
-A poem is evaluated by two metrics. The first is how closely it follows the 
-actual diamante poem structure. There are a total of 16 words across seven 
-rows. Each poem will receive a score out of 16 to determine if each words fits 
-its position. The second is a combined similarity score using nltk.wordnet and 
-spaCy.
-
-[Talk to text]
-[Saving poems to be read later]
-
-Resources considered:
+This file contains the functions used to generate the poem. parts_of_speech() 
+takes in the inputted string from the main function and breaks down the text 
+into lists of the parts of speech. Middle man takes those lists and chooses 
+which one to incorporate into the poem. Then, poem_maker() formats the lists to
+create the poem, which is represented as a list.
 """
 
 import spacy
@@ -32,7 +18,7 @@ def parts_of_speech(inputted_string):
     and verbs are kept and placed into respective lists to be passed down to 
     the middle_man function. Makes sure a word is added to a list once.
     
-    Returns noun_list, adjective_list, and verb_list.
+    Returns a noun list, an adjective list, and a verb list.
     
     Args:
         noun_list: list of nouns from the inputted text
@@ -66,6 +52,7 @@ def parts_of_speech(inputted_string):
             if str(token) not in verb_list:
                 verb_list.append(str(token))
 
+    # Returns all the nouns, adjective, and verbs from the text
     return noun_list, adjective_list, verb_list
 
 def middle_man(noun_list, adjective_list, verb_list):
@@ -74,10 +61,10 @@ def middle_man(noun_list, adjective_list, verb_list):
     wittles down the lists to only include the necessary number of nouns, 
     adjectvies, and verbs. If there are not enough of a part of speech, those 
     missing words are filled with a period. The function also selects for all 
-    available 'ing' verbs to be added to the a new_verb_list in an attemp to 
+    available 'ing' verbs to be added to the a new_verb_list in an attempt to 
     increase its evaluation score.
 
-    Returns a noun_list, adjective_list, and new_verb_list.
+    Returns a noun list, an adjective list, and a verb list.
 
     Args:
         noun_list: list of nouns from the inputted text
@@ -89,7 +76,6 @@ def middle_man(noun_list, adjective_list, verb_list):
     adjective_list = adjective_list
     original_verb_list = verb_list
     
-
     new_verb_list = []
 
     # Makes sure there are at least six nouns, a period for noun
@@ -136,6 +122,7 @@ def middle_man(noun_list, adjective_list, verb_list):
         while len(new_verb_list) > 6:
             new_verb_list.pop()
 
+    # Returns POS lists containing the poem's words
     return noun_list, adjective_list, new_verb_list
 
 def poem_maker(noun_list, adjective_list, verb_list):
@@ -143,7 +130,7 @@ def poem_maker(noun_list, adjective_list, verb_list):
     Takes in noun_list, adjective_list, and verb_list from middle_man to create 
     a list representation of the diamante poem.
 
-    Returns diamante_list.
+    Returns list representation of the poem.
 
     Args:
         noun_list: list of nouns from the inputted text
@@ -157,7 +144,7 @@ def poem_maker(noun_list, adjective_list, verb_list):
 
     diamante_list = []
 
-    #appends diamante list in diamante poem order
+    # Appends diamante list in diamante poem order
     diamante_list.append(noun_list[0])
     diamante_list.append(adjective_list[0:2])
     diamante_list.append(verb_list[0:3])
@@ -166,7 +153,5 @@ def poem_maker(noun_list, adjective_list, verb_list):
     diamante_list.append(adjective_list[2:])
     diamante_list.append(noun_list[-1])
 
-    # print("Here is the diamante list")
-    # print(diamante_list)
-
+    # Returns the poem represented as a string
     return diamante_list
