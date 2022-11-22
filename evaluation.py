@@ -48,21 +48,23 @@ def spacy_similarities(diamante_list):
 
     diamante_list = diamante_list
     
+    # Creates lists for the first and second halves of the poem
     first_half = diamante_list[0:3] + diamante_list[3][0:2]
     second_half = diamante_list[3][2:] + diamante_list[4:]
 
+    # Turns those lists into strings
     first_half_string = list_joiner(first_half)
     second_half_string = list_joiner(second_half)
 
-
+    # Uses nlp to prepare strings for a similarity score
     nlp = spacy.load("en_core_web_md")
     first_part = nlp(first_half_string)
     second_part = nlp(second_half_string)
 
-    print("Spacy similarity score for diamante poem:")
-    print(first_part.similarity(second_part))
+    # print("Spacy similarity score for diamante poem:")
+    # print(first_part.similarity(second_part))
 
-    # return(first_part.similarity(second_part))
+    return(first_part.similarity(second_part))
 
 def conventional_similarity(diamante_list):
     """
@@ -76,6 +78,8 @@ def conventional_similarity(diamante_list):
 
     # Iterates through diamante_list to count number of "."
     for part in diamante_list:
+
+        # Looks for 
         if type(part) == str:
             if part == "。" or part == ". ":
                 counter = counter + 1
@@ -97,14 +101,14 @@ def conventional_similarity(diamante_list):
 
     score = counter / 16
 
-    print("Conventional score for diamante poem:")
-    print(score)
+    # print("Conventional score for diamante poem:")
+    # print(score)
 
-    # return(score)
+    return(score)
 
 
-def main():
+# def main():
 
-    diamante_list = ['bravehearts', ['intense', 'legit'], ['comin', 'sing', 'dealing'], ['beginnings', 'fasho', 'blacker', 'panther'], ['ownin', 'starving', 'trying'], ['black', 'thorough'], 'truth']
+#     diamante_list = ['bravehearts', ['intense', 'legit'], ['comin', 'sing', 'dealing'], ['beginnings', 'fasho', 'blacker', 'panther'], ['ownin', 'starving', 'trying'], ['black', 'thorough'], 'truth']
 
-    conventional_similarity(diamante_list)
+#     conventional_similarity(diamante_list)

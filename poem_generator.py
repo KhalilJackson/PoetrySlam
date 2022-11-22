@@ -30,7 +30,7 @@ def parts_of_speech(inputted_string):
     Takes in the inputted text as a single string, and those words are 
     categorized by their parts of speech using spacy. The nouns, adjectives, 
     and verbs are kept and placed into respective lists to be passed down to 
-    the middle_man function. 
+    the middle_man function. Makes sure a word is added to a list once.
     
     Returns noun_list, adjective_list, and verb_list.
     
@@ -42,7 +42,7 @@ def parts_of_speech(inputted_string):
 
     nlp = spacy.load("en_core_web_sm")
 
-    #connect the parameter with the code
+    # Connect the parameter with the code
     doc = nlp(inputted_string)
 
     noun_list = []
@@ -51,17 +51,20 @@ def parts_of_speech(inputted_string):
 
     for token in doc:
         
-        #if the word is a noun, add to noun_list
+        # If the word is a noun, add to noun_list
         if token.pos_ == "NOUN":
-            noun_list.append(str(token))
+            if str(token) not in noun_list:
+                noun_list.append(str(token))
 
-        #if word is an adjective, add to adjective_list
+        # If word is an adjective, add to adjective_list
         if token.pos_ == "ADJ":
-            adjective_list.append(str(token))
+            if str(token) not in adjective_list:
+                adjective_list.append(str(token))
 
-        #if word is a verb, add to verb_list
+        # If word is a verb, add to verb_list
         if token.pos_ == "VERB":
-            verb_list.append(str(token))
+            if str(token) not in verb_list:
+                verb_list.append(str(token))
 
     return noun_list, adjective_list, verb_list
 
@@ -85,54 +88,54 @@ def middle_man(noun_list, adjective_list, verb_list):
     noun_list = noun_list
     adjective_list = adjective_list
     original_verb_list = verb_list
+    
 
     new_verb_list = []
 
-    #makes sure there are at least six nouns, a period for noun
+    # Makes sure there are at least six nouns, a period for noun
     if len(noun_list) < 6:
         while len(noun_list) < 6:
             noun_list.append(".")
 
-    #makes sure there are no more than six nouns
+    # Makes sure there are no more than six nouns
     if len(noun_list) > 6:
         while len(noun_list) > 6:
             noun_list.pop()
 
-    #makes sure there are at least four adjectives, a period for adjective
+    # Makes sure there are at least four adjectives, a period for adjective
     if len(adjective_list) < 4:
         while len(adjective_list) < 4:
             adjective_list.append(".")
 
-    #makes sure there are no more than 4 adjectives
+    # Makes sure there are no more than 4 adjectives
     if len(adjective_list) > 4:
         while len(adjective_list) > 4:
             adjective_list.pop()
 
-    #placed the 'ing' verbs from orinigal_verb_list in new_verb_list
+    # Placed the 'ing' verbs from orinigal_verb_list in new_verb_list
     for verb in verb_list:
         if verb[-3:] == "ing" or verb[-2:] == "in":
             new_verb_list.append(verb)
 
-    #makes sure there are at least six verbs in new_verb_list
+    # Makes sure there are at least six verbs in new_verb_list
     if len(new_verb_list) < 6:
+
+        # Add verbs from original list to new list until we reach 6
         while len(new_verb_list) < 6 and len(original_verb_list) > 0:
-            new_verb_list.append(original_verb_list.pop())
+
+            # Ensures no repeated verbs between the two lists
+            if original_verb_list.pop() not in new_verb_list:
+                new_verb_list.append(original_verb_list.pop())
         
-        #if there are no more verbs to add, substitute with a period
+        # If there are no more verbs to add, substitute with a period
         while len(new_verb_list) < 6 and len(original_verb_list) == 0:
             new_verb_list.append(".")
 
-    #makes sure there are no more than six verbs
+    # Makes sure there are no more than six verbs
     if len(new_verb_list) > 6:
         while len(new_verb_list) > 6:
             new_verb_list.pop()
 
-    # print("HERE IS THE NOUN LIST")
-    # print(noun_list)
-    # print("HERE IS THE ADJECTIVE LIST")
-    # print(adjective_list)
-    # print("HERE IS THE NEW VERB LIST")
-    # print(new_verb_list)
     return noun_list, adjective_list, new_verb_list
 
 def poem_maker(noun_list, adjective_list, verb_list):
@@ -147,10 +150,6 @@ def poem_maker(noun_list, adjective_list, verb_list):
         adjective_list: list of adjectives from the inputted text
         verb_list: list of adjectives from the inputted text
     """
-
-    # noun_list = ['blacker', 'truth', 'family', 'way', 'group', 'ceiling']
-    # adjective_list = ['hard', 'careful', 'watchin', 'beautiful']
-    # verb_list = ['comin', 'go', 'do', 'get', 'sing', 'depart']
 
     noun_list = noun_list
     adjective_list = adjective_list
@@ -167,7 +166,7 @@ def poem_maker(noun_list, adjective_list, verb_list):
     diamante_list.append(adjective_list[2:])
     diamante_list.append(noun_list[-1])
 
-    print("here is the diamante list")
-    print(diamante_list)
+    # print("Here is the diamante list")
+    # print(diamante_list)
 
     return diamante_list

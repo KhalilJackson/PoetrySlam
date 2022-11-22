@@ -21,6 +21,8 @@ exists a diamante poem for each input that fits the mold to varying degrees;
 the goal of this system is to find that diamante poem and determine how closely
 it aligns to the conventional diamante poem. 
 
+Words are not randomly selected our of the available nouns, adjectives, and verbs. The intention to input poems, songs, or passages allows the system to take advantage of the inherent relation between the words.
+
 Some "ing" verbs are shortened to "in," so we try to improve the accuracy of 
 evaluation by counting words that end in either "in" or "ing" as verbs. This 
 helps a lot, especially in case of song lyrics, but there is an issue where 
