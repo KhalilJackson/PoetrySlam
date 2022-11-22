@@ -44,9 +44,12 @@ evaluation by counting words that end in either "in" or "ing" as verbs. This
 helps a lot, especially in case of song lyrics, but there is an issue where 
 some verbs that end in "in" are not beign verd, such as "explain."
 
+Scholarly articles:
 
+*Could not format to 80 characters without affecting the urls*
 
-By the Code Day deadline, please submit a link to your GitHub repo containing your code and documentation. 
+https://d1wqtxts1xzle7.cloudfront.net/33283836/04-Poetry_in_Prof_Dev-with-cover-page-v2.pdf?Expires=1669123797&Signature=K12cP9byXoQqoi-paCTUZRMfJ5xv0dKpODGhRkpdr39HurSUGNeg5~~vf7DxfbK-fHWGXMeIHC5Ar-qFxjI7-5ixPZ9B-jL1qsP-OFobW6ft-x3OICOl4eTcRF73jlWQMfyJOHgPYe6twYS35JmhPNz5L4ACDRZRau7agty-bEPB7pn4WcJ6Yb-Dw2QN1JKrgNj-Iu-mzVf5KpgZRIDZGf5jWZ5YbkVd5Va-kEeybZlEFG6juSTvy-7femzKpDdRuVsarGWsdUSu31ClUrWW-SXKDpSKBE~dudig-xH0PW76jDGhgvrmG5ve0HUxG~GHlWE3qPd2L4QBgp62lvIp5w__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA
 
+https://books.google.com/books?hl=en&lr=&id=lVv6DwAAQBAJ&oi=fnd&pg=PR15&dq=spaCy&ots=6XMrxPUTFE&sig=thzUKLIYW5FEZJ2G5J2qtaP9x-0#v=onepage&q=spaCy&f=false
 
-Three scholarly papers in computer science that inspired your approach, and how.  You can research scholarly papers to include by using Google Scholar Links to an external site..
+https://aclanthology.org/W17-3502.pdf
