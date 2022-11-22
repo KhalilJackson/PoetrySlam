@@ -1,4 +1,4 @@
-# PoetrySlam
+# PoetrySlam: A Diamond in the Rough
 
 Goal: This project aims to develop a diamante poem generation and evaluation 
 system. A diamante poem is one that is diamond shaped because it takes two 
@@ -6,9 +6,8 @@ nouns, synonyms or antonyms, and follows the order of 1-3 for the first noun
 and 3-1 for the second (one noun, two adjectives, and three 'ing' verbs). 
 Between both sets of three 'ing' verbs is four nouns that relate to both nouns.
 
-Title and setup: This poem generator is named A Diamond in the Rough. 
-The setup needed to run the system is that you have .txt files of string in the
-same folder as the code then it is ran; you input the name of the file 
+Setup: The setup needed to run the system is that you have .txt files of string
+in the same folder as the code then it is ran; you input the name of the file 
 including the .txt.
 
 Code Description: The generator takes in a .txt file and uses spacy to group 
