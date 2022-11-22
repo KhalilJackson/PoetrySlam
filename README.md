@@ -35,17 +35,22 @@ challenge because I my experience in python relative to other languages is
 less, and I did things and thought about problems in a way I had not done 
 before even in another language.
 
-Issues to address: 1. Words are not randomly selected our of the available 
-nouns, adjectives, and verbs. The intention to input poems, songs, or passages 
-allows the system to take advantage of the inherent relation between the words.
+Issues to address: 
+1. Words are not randomly selected our of the available nouns, adjectives, and 
+verbs. Essentially, the first six nouns and four verbs are added to the poem, 
+and other than the "ing" verbs we prioritize, verbs are also added in order. 
+The intention to input songs was to allow the system to take advantage of the 
+inherent relation between the words as a way to mitigate this problem.
 2. Some "ing" verbs are shortened to "in," so we try to improve the accuracy of
 evaluation by counting words that end in either "in" or "ing" as verbs. This 
 helps a lot, especially in case of song lyrics, but there is an issue where 
 some verbs that end in "in" are not beign verd, such as "explain."
+3. There is a bug in the code where there is a value error where a value ends 
+up being none; this bug is interesting in that it occurs sometimes with 
+seemingly no regularity; you can run the same file and get the error or not. 
+I believe it has something to do with nlp in the spacy_similarity() function.
 
 Scholarly articles:
-
-*Could not format to 80 characters without affecting the urls*
 
 https://d1wqtxts1xzle7.cloudfront.net/33283836/04-Poetry_in_Prof_Dev-with-cover-page-v2.pdf?Expires=1669123797&Signature=K12cP9byXoQqoi-paCTUZRMfJ5xv0dKpODGhRkpdr39HurSUGNeg5~~vf7DxfbK-fHWGXMeIHC5Ar-qFxjI7-5ixPZ9B-jL1qsP-OFobW6ft-x3OICOl4eTcRF73jlWQMfyJOHgPYe6twYS35JmhPNz5L4ACDRZRau7agty-bEPB7pn4WcJ6Yb-Dw2QN1JKrgNj-Iu-mzVf5KpgZRIDZGf5jWZ5YbkVd5Va-kEeybZlEFG6juSTvy-7femzKpDdRuVsarGWsdUSu31ClUrWW-SXKDpSKBE~dudig-xH0PW76jDGhgvrmG5ve0HUxG~GHlWE3qPd2L4QBgp62lvIp5w__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA
 
