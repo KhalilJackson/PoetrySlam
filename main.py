@@ -32,7 +32,8 @@ def get_file_string():
         file = input("What .txt file would you like to use? Add .txt to the " +
         "name.")
 
-        if "from" in file:
+        # If already generated, read out poem
+        if "from" in file and "_to_" in file:
             file_reader(file)
 
         f = open(file,"r")

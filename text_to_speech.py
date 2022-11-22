@@ -37,7 +37,7 @@ def file_creator(diamante_string, similarity_score, conventional_score):
 
     # Gathers the first and last noun from the string
     first_noun = diamante_string.split(" ", 1)[0]
-    last_noun = diamante_string.split(" ", -1)[-1]
+    last_noun = diamante_string.split(" ", -1)[-2]
 
     # Combines first and last noun to create the file name
     file_name = "from_" + first_noun + "_to_" + last_noun + ".txt"
